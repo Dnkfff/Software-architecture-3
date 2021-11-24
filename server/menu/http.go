@@ -1,10 +1,11 @@
-package channels
+package menu
 
 import (
 	"encoding/json"
-	"github.com/roman-mazur/chat-channels-example/server/tools"
 	"log"
 	"net/http"
+
+	"github.com/ddynikov/Software-architecture-3/server/tools"
 )
 
 // Channels HTTP handler.
@@ -14,7 +15,7 @@ type HttpHandlerFunc http.HandlerFunc
 func HttpHandler(store *Store) HttpHandlerFunc {
 	return func(rw http.ResponseWriter, r *http.Request) {
 		if r.Method == "GET" {
-			handleListChannels(store, rw)
+			handleGetMenu(store, rw)
 		} else if r.Method == "POST" {
 			handleChannelCreate(r, rw, store)
 		} else {
@@ -24,7 +25,7 @@ func HttpHandler(store *Store) HttpHandlerFunc {
 }
 
 func handleChannelCreate(r *http.Request, rw http.ResponseWriter, store *Store) {
-	var c Channel
+	var c MenuItem
 	if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
 		log.Printf("Error decoding channel input: %s", err)
 		tools.WriteJsonBadRequest(rw, "bad JSON payload")
@@ -39,8 +40,8 @@ func handleChannelCreate(r *http.Request, rw http.ResponseWriter, store *Store) 
 	}
 }
 
-func handleListChannels(store *Store, rw http.ResponseWriter) {
-	res, err := store.ListChannels()
+func handleGetMenu(store *Store, rw http.ResponseWriter) {
+	res, err := store.getMenu()
 	if err != nil {
 		log.Printf("Error making query to the db: %s", err)
 		tools.WriteJsonInternalError(rw)

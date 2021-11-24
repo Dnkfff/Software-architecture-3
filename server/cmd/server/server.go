@@ -3,8 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/roman-mazur/chat-channels-example/server/channels"
 	"net/http"
+
+	menu "github.com/ddynikov/Software-architecture-3/server/menu"
 )
 
 type HttpPortNumber int
@@ -13,7 +14,7 @@ type HttpPortNumber int
 type ChatApiServer struct {
 	Port HttpPortNumber
 
-	ChannelsHandler channels.HttpHandlerFunc
+	MenuHandler menu.HttpHandlerFunc
 
 	server *http.Server
 }
@@ -22,7 +23,7 @@ type ChatApiServer struct {
 // If this methods succeeds, it does not return until server is shut down.
 // Returned error will never be nil.
 func (s *ChatApiServer) Start() error {
-	if s.ChannelsHandler == nil {
+	if s.MenuHandler == nil {
 		return fmt.Errorf("channels HTTP handler is not defined - cannot start")
 	}
 	if s.Port == 0 {
@@ -30,7 +31,7 @@ func (s *ChatApiServer) Start() error {
 	}
 
 	handler := new(http.ServeMux)
-	handler.HandleFunc("/channels", s.ChannelsHandler)
+	handler.HandleFunc("/menu", s.MenuHandler)
 
 	s.server = &http.Server{
 		Addr:    fmt.Sprintf(":%d", s.Port),
