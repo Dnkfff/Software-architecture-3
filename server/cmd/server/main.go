@@ -32,7 +32,7 @@ func main() {
 	if server, err := ComposeApiServer(HttpPortNumber(*httpPortNumber)); err == nil {
 		// Start it.
 		go func() {
-			log.Println("Starting chat server...")
+			log.Println("Starting menu server...")
 
 			err := server.Start()
 			if err == http.ErrServerClosed {
