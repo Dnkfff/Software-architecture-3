@@ -1,4 +1,4 @@
-const request = require('request');
+import request from 'request';
 
 const Client = (baseUrl) => {
 
@@ -35,4 +35,4 @@ const Client = (baseUrl) => {
     };
 };
 
-module.exports = { Client };
+export default Client;
