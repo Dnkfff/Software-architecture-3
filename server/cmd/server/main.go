@@ -17,7 +17,7 @@ func NewDbConnection() (*sql.DB, error) {
 	conn := &db.Connection{
 		DbName:     "arch_test_1",
 		User:       "postgres",
-		Password:   "prostopetya",
+		Password:   "141592",
 		Host:       "localhost",
 		DisableSSL: true,
 	}
