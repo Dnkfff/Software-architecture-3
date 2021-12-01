@@ -1,12 +1,15 @@
-const http = import('../common/http.js');
+import http  from '../common/http.js';
 
 const Client = (baseUrl) => {
 
-    const client = http.then((result) => result.baseUrl);
+    const client = http(baseUrl)
+
+
+
 
     return {
-        listMenu: () => client.get('/menu_list'),
-        createOrder: (menuId, orderId) => client.post('/make_order', { menuId: menuId, orderId: orderId })
+        listMenu: () => client.get('/menu'),
+        createOrder: (menuId, orderId) => client.post('/menu', { menuId: menuId, orderId: orderId })
     }
 
 };
