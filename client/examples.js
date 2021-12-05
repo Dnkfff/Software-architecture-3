@@ -18,9 +18,12 @@ client.then((obj) => {
 
 client.then((obj) => {
          const createOrder = obj.createOrder(0,1); // outputing order 0, 1
-         console.log('Scenario 2');
-         console.log('Creating an order from menu:');
-         createOrder.then((result) => console.log(result))
+
+         createOrder.then((response) => {
+           console.log('Scenario 2');
+           console.log('Creating an order from menu:');
+           for (let msg in response) console.log(msg)
+         })
      })
      .catch((e) => {
          console.log(`Problem creating a new order: ${e.message}`);
