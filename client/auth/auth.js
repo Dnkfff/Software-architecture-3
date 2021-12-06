@@ -59,7 +59,7 @@ export const logUp = (userData) => {
     return dispatch => {
         dispatch(authStart());
 
-        axios.post('http://localhost:5000/auth/signup', {
+        axios.post('http://localhost:8080/auth/signup', {
         fname: userData.fname,
         lname: userData.lname,
         email: userData.email,
@@ -87,7 +87,7 @@ export const logIn = (userData) => {
     return dispatch => {
         dispatch(authStart());
 
-        axios.post('http://localhost:5000/auth/signin', {
+        axios.post('http://localhost:8080/auth/signin', {
             email: userData.email,
             password: userData.password
         })
