@@ -62,13 +62,9 @@ func (s *Store) CreateOrder(order Order) error {
 		return fmt.Errorf("order must be created with a desc number")
 	}
 
-	menuWithBytes, getMenuError := s.getMenu()
+	_, getMenuError := s.getMenu()
 	if getMenuError != nil {
 		return getMenuError
-	}
-	convertedJson, convertedError := json.Marshal(menuWithBytes)
-	if convertedError != nil {
-		return convertedError
 	}
 
 	var menu []MenuItem
