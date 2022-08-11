@@ -1,6 +1,0 @@
-node_modules
-config.json
-test.js
-.travis.yml
-.idea
-.env
