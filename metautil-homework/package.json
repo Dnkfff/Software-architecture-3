@@ -1,0 +1,51 @@
+{
+  "name": "metautil",
+  "version": "3.5.24",
+  "author": "Timur Shemsedinov <timur.shemsedinov@gmail.com>",
+  "license": "MIT",
+  "description": "Metarhia utilities",
+  "keywords": [
+    "node.js",
+    "metarhia",
+    "util"
+  ],
+  "main": "metautil.js",
+  "types": "metautil.d.ts",
+  "files": [
+    "lib/",
+    "metautil.d.ts"
+  ],
+  "engines": {
+    "node": "14 || 16 || 18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metarhia/metautil.git"
+  },
+  "bugs": {
+    "url": "https://github.com/metarhia/metautil/issues",
+    "email": "timur.shemsedinov@gmail.com"
+  },
+  "homepage": "https://metarhia.com",
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/tshemsedinov"
+  },
+  "scripts": {
+    "test": "npm run lint && npm run types && metatests test/",
+    "types": "tsc -p tsconfig.json",
+    "lint": "eslint . && prettier --check \"**/*.js\" \"**/*.json\" \"**/*.md\" \"**/.*rc\" \"**/*.ts\"",
+    "fmt": "prettier --write \"**/*.js\" \"**/*.json\" \"**/*.md\" \"**/.*rc\" \"**/*.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.14",
+    "eslint": "^8.23.0",
+    "eslint-config-metarhia": "^8.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "metatests": "^0.8.2",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.2"
+  }
+}
